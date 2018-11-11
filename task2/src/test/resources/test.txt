@@ -1,4 +1,3 @@
-Test text to
-check my textfileReader!
-ssdasdasadsadssda fssdfs sfd ddf
-sdsdsdsdsdsdsdsdsd
+    Test text to.
+    Test to, check my; textfileReader! ssdasdasadsadssda: fssdfs, sfd, ddf.
+    sdsdsdsdsdsdsdsdsd.
