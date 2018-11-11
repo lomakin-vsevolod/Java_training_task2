@@ -3,6 +3,7 @@ package com.epam.training.test;
 import com.epam.training.util.TextFileConstants;
 import com.epam.training.util.TextFileReader;
 import model.CompositeElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import parser.PatternTextParser;
 
@@ -19,6 +20,7 @@ public class TextFileReaderTest {
         System.out.println(" ");
         System.out.println(wholeText.toString());
 
+        Assert.assertEquals(test,wholeText.toString());
     }
 
 }
