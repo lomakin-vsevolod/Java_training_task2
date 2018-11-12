@@ -1,6 +1,7 @@
 package parser;
 
 import model.CompositeElement;
+import model.CompositeType;
 import model.LeafElement;
 import org.apache.log4j.Logger;
 
@@ -17,6 +18,7 @@ public class PatternTextParser implements ITextParser {
     @Override
     public CompositeElement parse(String text) {
         CompositeElement wholeText = new CompositeElement();
+        wholeText.setType(CompositeType.TEXT);
         wholeText = parseToParagraph(wholeText,text);
 
         return wholeText;
@@ -26,6 +28,7 @@ public class PatternTextParser implements ITextParser {
     public CompositeElement parseToParagraph(CompositeElement wholeText, String text) {
         logger.debug("parseToParagraph:");
         CompositeElement paragraphList = new CompositeElement();
+        paragraphList.setType(CompositeType.PARAGRAPH);
         Pattern paragraphPattern = Pattern.compile(REGEX_PARAGRAPH_WITH_LISTING);
         LeafElement paragraphLeaf = null;
         String paragraph;
@@ -35,6 +38,7 @@ public class PatternTextParser implements ITextParser {
             paragraph=matcher.group();
             if (Pattern.matches(REGEX_LISTING,paragraph)){
                 paragraphLeaf = new LeafElement(paragraph);
+                paragraphLeaf.setType(CompositeType.LISTING);
                 logger.debug("Paragraph listing:"+paragraphLeaf.toString());
                 paragraphList.addElement(paragraphLeaf);
             } else {
@@ -53,6 +57,7 @@ public class PatternTextParser implements ITextParser {
     public CompositeElement parseToSentence(CompositeElement paragraphList, String paragraph) {
         logger.debug("parseToSentence:");
         CompositeElement sentenceList = new CompositeElement();
+        sentenceList.setType(CompositeType.SENTENCE);
         Pattern sentencePattern = Pattern.compile(REGEX_SENTENCE);
         Matcher matcher = sentencePattern.matcher(paragraph);
         //LeafElement sentenceLeaf = null;
@@ -72,6 +77,7 @@ public class PatternTextParser implements ITextParser {
     public CompositeElement parseToWord(CompositeElement sentenceList, String sentence) {
         logger.debug("parseToWord:");
         CompositeElement wordList = new CompositeElement();
+        wordList.setType(CompositeType.WORD);
         Pattern wordPattern = Pattern.compile(REGEX_WORD);
         Matcher matcher = wordPattern.matcher(sentence);
         //LeafElement wordLeaf = null;
@@ -91,6 +97,7 @@ public class PatternTextParser implements ITextParser {
     public CompositeElement parseToWordAndSign(CompositeElement wordList, String word) {
         logger.debug("parseToWordAndSign");
         CompositeElement wordAndSignList = new CompositeElement();
+        wordAndSignList.setType(CompositeType.WORD_AND_SIGN);
         Pattern wordAndSignPattern = Pattern.compile(REGEX_WORD_AND_SIGN);
         Matcher matcher = wordAndSignPattern.matcher(word);
         //LeafElement wordAndSignLeaf = null;
@@ -108,6 +115,7 @@ public class PatternTextParser implements ITextParser {
     @Override
     public CompositeElement parseToSymbol(CompositeElement wordAndSignList, String wordAndSign) {
         CompositeElement symbolList = new CompositeElement();
+        symbolList.setType(CompositeType.SYMBOL);
         Pattern symbolPattern = Pattern.compile(REGEX_SYMBOL);
         Matcher matcher = symbolPattern.matcher(wordAndSign);
         LeafElement symbolLeaf = null;

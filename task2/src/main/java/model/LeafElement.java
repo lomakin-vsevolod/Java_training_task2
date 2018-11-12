@@ -2,7 +2,7 @@ package model;
 
 import java.util.Iterator;
 
-public class LeafElement implements IElement {
+public class LeafElement extends AbstractElement {
     private String string;
 
     public LeafElement(String string) {
@@ -10,12 +10,12 @@ public class LeafElement implements IElement {
     }
 
     @Override
-    public void addElement(IElement element) {
+    public void addElement(AbstractElement element) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void deleteElement(IElement element) {
+    public void deleteElement(AbstractElement element) {
         throw new UnsupportedOperationException();
     }
 
@@ -25,12 +25,12 @@ public class LeafElement implements IElement {
     }
 
     @Override
-    public IElement getElement(int index) {
+    public AbstractElement getElement(int index) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Iterator<IElement> getIterator() {
+    public Iterator<AbstractElement> getIterator() {
         throw new UnsupportedOperationException();
     }
 

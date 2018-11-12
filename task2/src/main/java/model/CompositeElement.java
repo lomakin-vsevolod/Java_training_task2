@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CompositeElement implements IElement {
-    private List<IElement> elementList = new ArrayList<IElement>();
+public class CompositeElement extends AbstractElement {
+    private List<AbstractElement> elementList = new ArrayList<AbstractElement>();
 
     public CompositeElement() {
     }
 
     @Override
-    public void addElement(IElement element) {
+    public void addElement(AbstractElement element) {
         elementList.add(element);
     }
 
     @Override
-    public void deleteElement(IElement element) {
+    public void deleteElement(AbstractElement element) {
         elementList.remove(element);
     }
 
@@ -26,12 +26,12 @@ public class CompositeElement implements IElement {
     }
 
     @Override
-    public IElement getElement(int index) {
+    public AbstractElement getElement(int index) {
         return elementList.get(index);
     }
 
     @Override
-    public Iterator<IElement> getIterator() {
+    public Iterator<AbstractElement> getIterator() {
         return elementList.iterator();
     }
 
@@ -48,8 +48,8 @@ public class CompositeElement implements IElement {
     @Override
     public String toString(){
         StringBuilder wholeString = new StringBuilder();
-        for (IElement iElement : elementList){
-            wholeString.append(iElement.toString());
+        for (AbstractElement abstractElement : elementList){
+            wholeString.append(abstractElement.toString());
         }
         return wholeString.toString();
     }
