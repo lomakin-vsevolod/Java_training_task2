@@ -119,6 +119,5 @@ public class PatternTextParser implements ITextParser {
         }
         wordAndSignList.addElement(symbolList);
         return wordAndSignList;
-        //throw new UnsupportedOperationException();
     }
 }
